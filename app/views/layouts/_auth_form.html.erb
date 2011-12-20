@@ -1,0 +1,7 @@
+  <% if requester_signed_in?  %>
+    I am Requester
+    <%= link_to "Log out", destroy_requester_session_path, :method => 'delete' %>
+  <% elsif worker_signed_in? %>
+    I am Worker
+    <%= link_to "Log out", destroy_worker_session_path, :method => 'delete' %>
+  <% end %>

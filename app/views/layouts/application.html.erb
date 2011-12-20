@@ -7,8 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="main">
+  <%= render 'layouts/header'%>
+  <div id="site_content">    
+    <%= render 'layouts/auth_form'%>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer'%>
+</div>
 </body>
 </html>
