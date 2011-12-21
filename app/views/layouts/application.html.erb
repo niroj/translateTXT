@@ -11,10 +11,11 @@
   <%= render 'layouts/header'%>
   <div id="site_content">    
     <%= render 'layouts/auth_form'%>
+    <div class="notices"> 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-
-      <%= yield %>
+    </div>
+    <%= yield %>
     </div>
     <%= render 'layouts/footer'%>
 </div>

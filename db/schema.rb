@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220100004) do
+ActiveRecord::Schema.define(:version => 20111221043234) do
 
   create_table "requesters", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20111220100004) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "credits"
+    t.string   "username"
   end
 
   add_index "requesters", ["email"], :name => "index_requesters_on_email", :unique => true
@@ -44,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20111220100004) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "earning"
+    t.integer  "rating"
+    t.string   "username"
   end
 
   add_index "workers", ["email"], :name => "index_workers_on_email", :unique => true

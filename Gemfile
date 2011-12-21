@@ -34,4 +34,9 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  
+end
+
+group :test, :development do
+  gem 'pry'
 end

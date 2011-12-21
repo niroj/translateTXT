@@ -17,6 +17,15 @@ p
 img
 { border: 0;}
 
+#error_explanation h2
+{
+  font: normal 110% 'century gothic', arial, sans-serif;
+
+  margin: 0 0 15px 0;
+  padding: 15px 0 5px 0; 
+}
+
+
 h1, h2, h3, h4, h5, h6 
 { font: normal 179% 'century gothic', arial, sans-serif;
   color: #43423F;
@@ -311,3 +320,10 @@ table tr td
 { background: #E5E5DB;
   color: #47433F;
   border-top: 1px solid #FFF;}
+  
+  
+.notices{ 
+  text-align: left;
+  width: 613px;
+  padding: 0;
+}

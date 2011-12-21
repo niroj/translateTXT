@@ -6,4 +6,10 @@ class Requester < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  before_save :default_values
+  def default_values
+    self.credits = 1000 unless self.credits
+  end
+  
 end
