@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  requester: 
+  content: MyText
+  lang_from: MyString
+  lang_to: MyString
+  budget: 1
+  rating: 1
+  status: 1
+
+two:
+  requester: 
+  content: MyText
+  lang_from: MyString
+  lang_to: MyString
+  budget: 1
+  rating: 1
+  status: 1

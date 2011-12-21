@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  original: MyText
+  translate: MyText
+  price: 1
+  hit: false
+  task: 
+
+two:
+  original: MyText
+  translate: MyText
+  price: 1
+  hit: false
+  task: 

@@ -1,0 +1,31 @@
+<h1>New Task</h1>
+  <%= form_for(Task.new, remote: true) do |f| %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, placeholder: "Title of task" %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content, placeholder: "add content to be converted" %>
+    </div>
+    <div class="field">
+      <%= f.label :lang_from %><br />
+      <%= f.text_field :lang_from, placeholder: "Language to be converted from" %>
+    </div>
+    <div class="field">
+      <%= f.label :lang_to %><br />
+      <%= f.text_field :lang_to, placeholder: "Language to be converted to" %>
+    </div>
+    <div class="field">
+      <%= f.label :budget %><br />
+      <%= f.text_field :budget, placeholder: "Total Budget" %>
+    </div>
+    <div class="field">
+      <%= f.label :rating %><br />
+      <%= f.text_field :rating, placeholder: "optional: if you want worker to be of minimium rating " %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

@@ -8,6 +8,10 @@ Translator::Application.routes.draw do
     match '/requester' => "requester#show", :as => :requester_root
   end
 
+  resources :tasks do
+    resources :microtasks
+  end
+    
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

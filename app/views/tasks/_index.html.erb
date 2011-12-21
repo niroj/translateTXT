@@ -1,0 +1,6 @@
+<b>Your tasks</b><br />
+<% @tasks.each do |task|%>
+  
+  <p><%= link_to task.title, task_path(task), :remote => true %></p>
+  
+<% end %>

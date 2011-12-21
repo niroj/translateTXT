@@ -1,0 +1,12 @@
+<% if current_requester.credits - @task.budget >= 0 %>
+$(".newly_added").html("<%= escape_javascript(render @task) %>");
+$("#task_content").val("")
+$("#task_lang_from").val("")
+$("#task_lang_to").val("")
+$("#task_budget").val("")
+$("#task_rating").val("")
+$("#task_title").val("")
+$('#credit').html("<%=current_requester.credits %>")
+<% else %>
+alert('you do not have enough credit');
+<% end %>

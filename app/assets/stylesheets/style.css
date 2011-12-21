@@ -223,10 +223,12 @@ ul#menu li a:hover
 
 #content ul li
 { list-style-type: none;
-  background: url(bullet.png) no-repeat;
   margin: 0 0 0 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
+#content ul li.even{
+  color:blue;
+}
 
 #footer
 { width: 916px;
@@ -326,4 +328,14 @@ table tr td
   text-align: left;
   width: 613px;
   padding: 0;
+}
+
+.newly_added h1 {
+  text-decoration: blink;
+}
+.microtask_list{
+  list-style:none;
+}
+.microtask_list li:nth-child(even){
+  color:blue;
 }

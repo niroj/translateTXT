@@ -1,3 +1,23 @@
+<div class="sidebar">
+  <div class="newly_added">
+    <h1>Newly added</h1>
+    <% if not current_requester.tasks.empty? %>
+      <p> <%= link_to current_requester.tasks.last.title, task_path(current_requester.tasks.last), :remote => true %></p>
+    <% end %>
+  </div>
+  <div class="active_links">
+  <h1>Active Links</h1>
+    <ul>
+      <li><a href="#">link 1</a></li>
+      <li><a href="#">link 2</a></li>
+      <li><a href="#">link 3</a></li>
+      <li><a href="#">link 4</a></li>
+    </ul>
+  </div>
+  <div class="all_tasks">
+    <h1><%= link_to "All tasks", tasks_path, :remote => true %> </h1>
+  </div>
+</div>
 <div id="content">
-  <%= @requester.email %>
+  <%= render 'form' %>
 </div>

@@ -1,7 +1,7 @@
   <% if requester_signed_in?  %>
-    I am Requester
+    Welcome! <%= current_requester.username %>&nbsp;&nbsp;You have &nbsp;<b id="credit"><%= current_requester.credits%></b>&nbsp;credits&nbsp;|&nbsp;
     <%= link_to "Log out", destroy_requester_session_path, :method => 'delete' %>
   <% elsif worker_signed_in? %>
-    I am Worker
+    Welcome! <%= current_worker.username %>&nbsp;&nbsp;You have earned &nbsp;<%= current_worker.earning%>&nbsp;|&nbsp;
     <%= link_to "Log out", destroy_worker_session_path, :method => 'delete' %>
   <% end %>
