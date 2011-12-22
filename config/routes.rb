@@ -11,7 +11,7 @@ Translator::Application.routes.draw do
   resources :tasks do
     resources :microtasks
   end
-    resources :microtasks, :only => [:hit] do 
+    resources :microtasks, :only => [:hit, :update] do 
       member do
         put 'hit'
       end

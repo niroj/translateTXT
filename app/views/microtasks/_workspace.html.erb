@@ -1,0 +1,15 @@
+<div class="original_text">
+  <b>Original Text</b><br />
+  <textarea disabled = "disable"><%= @microtask.original%></textarea>
+</div>
+<%= form_for(@microtask) do |f| %>
+  <div class="translate_text">
+    <b>Translate the original Text here</b><br />
+    <%= f.text_area :translate %>
+  </div>
+  <br />
+  <div class="actions">
+     <%= f.submit %>
+   </div>
+<% end %>
+  

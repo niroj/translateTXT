@@ -20,11 +20,14 @@ class TasksController < ApplicationController
   
   def create
     @task = @requester.tasks.new(params[:task])
-    @task.save
-    respond_to do |format|
-          format.html { redirect_to @requester, notice: 'task was successfully created.' }
-          format.js         
-      end
+    if @task.budget > @requester.credits
+    else
+     @task.save
+     respond_to do |format|
+           format.html { redirect_to @requester, notice: 'task was successfully created.' }
+           format.js         
+       end
+     end
   end
 
   # def destroy

@@ -14,7 +14,7 @@
       <td><%= microtask.price %></td>
       <td>
       <% if microtask.hit == true %>
-      <%= link_to "hit", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></td>
+        <b class = "hit" id="hit_link<%=microtask.id%>"><%= link_to "hit", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></b></td>
       <% else %>
         <i>hitted</i>
       <% end %>

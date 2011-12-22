@@ -1,6 +1,17 @@
 <b>Your tasks</b><br />
+<table>
+  <tr>
+    <th>Title</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Price</th>
+  </tr>
 <% @tasks.each do |task|%>
-  
-  <p><%= link_to task.title, task_path(task), :remote => true %></p>
-  
+  <tr>
+      <td><b><%= link_to task.title, task_path(task), :remote => true %></b></td>
+      <td><%= task.lang_from%></td>
+      <td><%= task.lang_to%></td>
+      <td><%= task.budget%></td>
+  </tr>
 <% end %>
+</table>

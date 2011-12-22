@@ -361,3 +361,18 @@ table tr td
 a {
   text-decoration: none;
 }
+.original_text {
+  float: left;
+}
+.original_text textarea{
+  height: 400px;
+  width: 300px;
+  resize: none;
+  font-size: 16px;
+}
+.translate_text textarea{
+  height: 400px;
+  width: 300px;
+  resize: none;
+  font-size: 16px;
+}
