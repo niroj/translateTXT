@@ -7,3 +7,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(function () {
+  $('#microtask_div th a, #microtask_div .pagination a').live('click',
+    function () {
+      $.getScript(this.href);
+      return false;
+    }
+  );
+});

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111221080700) do
+ActiveRecord::Schema.define(:version => 20111222042210) do
 
   create_table "microtasks", :force => true do |t|
     t.text     "original"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20111221080700) do
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lang_from"
+    t.string   "lang_to"
   end
 
   add_index "microtasks", ["task_id"], :name => "index_microtasks_on_task_id"

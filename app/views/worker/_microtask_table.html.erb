@@ -1,0 +1,26 @@
+<table class = "microtask_table">
+  <tr>
+    <th>Details</th>
+    <th><%= sortable "lang_from", "From" %></th>
+    <th><%= sortable "lang_to", "To" %></th>
+    <th><%= sortable "price", "Amount" %></th>
+    <th>Action</th>                  
+  </tr>
+  <% @microtasks.each do |microtask| %>
+    <tr>
+      <td><b>Has to translate:</b> <br /><%= microtask.original.truncate(65) %></td>
+      <td><%= microtask.lang_from %></td>
+      <td><%= microtask.lang_to %></td>        
+      <td><%= microtask.price %></td>
+      <td>
+      <% if microtask.hit == true %>
+      <%= link_to "hit", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></td>
+      <% else %>
+        <i>hitted</i>
+      <% end %>
+    </tr> 
+  <% end %>
+</table>
+<%= will_paginate @microtasks %>
+
+

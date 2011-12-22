@@ -5,5 +5,11 @@ class Worker < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  
+  before_save :default_values
+  def default_values
+    self.earning = 0 unless self.earning
+  end
+  
 end

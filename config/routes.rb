@@ -11,7 +11,11 @@ Translator::Application.routes.draw do
   resources :tasks do
     resources :microtasks
   end
-    
+    resources :microtasks, :only => [:hit] do 
+      member do
+        put 'hit'
+      end
+    end
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

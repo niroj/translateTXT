@@ -131,6 +131,8 @@ ol li
 #logo_text h1 a .logo_colour
 { color: #E4EC04;}
 
+
+
 #logo_text a:hover .logo_colour
 { color: #FFF;}
 
@@ -138,6 +140,9 @@ ol li
 { font-size: 120%;
   padding: 4px 0 0 0;
   color: #B7B9A7;}
+  
+#logo_text h1 span a
+  { color: #E4EC04;}  
 
 #menubar
 { width: 898px;
@@ -338,4 +343,21 @@ table tr td
 }
 .microtask_list li:nth-child(even){
   color:blue;
+}
+
+.microtask_table th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.microtask_table th .asc { 
+  background-image: url(up_arrow.gif); 
+}
+
+.microtask_table th .desc { 
+  background-image: url(down_arrow.gif); 
+}
+
+a {
+  text-decoration: none;
 }

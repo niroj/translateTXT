@@ -1,7 +1,6 @@
 class MicrotasksController < ApplicationController
   
 def show
-  binding.pry
   @microtasks = @task.microtasks
   
 end
@@ -12,5 +11,11 @@ end
 	def find_task
 		@task = Task.find(params[:task_id])
 	end
+	
+	
+  def hit
+    @task = Task.find(params[:task_id])
+    
+  end
 end
 

@@ -3,15 +3,20 @@
     <div id="logo">
       <div id="logo_text">
         <!-- class="logo_colour", allows you to change the colour of the text -->
-        <h1><a href="index.html">Text<span class="logo_colour">Translator</span></a></h1>
+        <h1><%= link_to "Text", root_path %><span class="logo_colour"><%= link_to "Translator", root_path %></span></h1>
         <h2>Simple. Comprehensive. Text Translator.</h2>
       </div>
     </div>
     <div id="menubar">
       <ul id="menu">
         <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-        <li class="selected"><%= link_to "Home", requester_root_path %></li>
-
+        <% if requester_signed_in? %>
+          <li class="selected"><%= link_to "Home", requester_root_path %></li>
+        <% elsif worker_signed_in? %>
+          <li class="selected"><%= link_to "Home", worker_root_path %></li>
+        <% else %>
+          <li class="selected"><%= link_to "Home", root_path %></li>
+        <% end %>
         <li><a href="#">Contact Us</a></li>
       </ul>
     </div>
