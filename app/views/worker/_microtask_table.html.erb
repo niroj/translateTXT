@@ -1,10 +1,10 @@
-<table class = "microtask_table">
+<table class = "microtask_table" width=100%>
   <tr>
-    <th>Details</th>
-    <th><%= sortable "lang_from", "From" %></th>
-    <th><%= sortable "lang_to", "To" %></th>
-    <th><%= sortable "price", "Amount" %></th>
-    <th>Action</th>                  
+    <th width = 50%>Details</th>
+    <th width = 13%><%= sortable "lang_from", "From" %></th>
+    <th width = 13%><%= sortable "lang_to", "To" %></th>
+    <th width = 12%><%= sortable "price", "Amount" %></th>
+    <th width = 12%>Action</th>                  
   </tr>
   <% @microtasks.each do |microtask| %>
     <tr>
@@ -16,11 +16,11 @@
       <% if microtask.hit == true %>
         <b class = "hit" id="hit_link<%=microtask.id%>"><%= link_to "hit", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></b></td>
       <% else %>
-        <i>hitted</i>
+        <i>Submitted</i>
       <% end %>
     </tr> 
   <% end %>
 </table>
-<%= will_paginate @microtasks %>
+<center><%= will_paginate @microtasks %></center>
 
 

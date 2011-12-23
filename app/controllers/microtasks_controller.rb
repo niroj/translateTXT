@@ -11,11 +11,11 @@ class MicrotasksController < ApplicationController
 
   def update
     @microtask =  Microtask.find(params[:id])
-    
+    @microtask.worker = current_worker
+    current_worker.submitted += 1
+    current_worker.save
     respond_to do |format|
       if  @microtask.update_attributes(params[:microtask])
-        @microtask.hit = true
-        @microtask.save
         format.html { redirect_to worker_root_path }
         format.js
       end

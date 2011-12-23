@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111222042210) do
+ActiveRecord::Schema.define(:version => 20111223064028) do
 
   create_table "microtasks", :force => true do |t|
     t.text     "original"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20111222042210) do
     t.datetime "updated_at"
     t.string   "lang_from"
     t.string   "lang_to"
+    t.integer  "worker_id"
   end
 
   add_index "microtasks", ["task_id"], :name => "index_microtasks_on_task_id"
@@ -76,8 +77,9 @@ ActiveRecord::Schema.define(:version => 20111222042210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "earning"
-    t.integer  "rating"
     t.string   "username"
+    t.integer  "submitted"
+    t.integer  "accepted"
   end
 
   add_index "workers", ["email"], :name => "index_workers_on_email", :unique => true
