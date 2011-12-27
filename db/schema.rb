@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(:version => 20111223064028) do
   add_index "requesters", ["email"], :name => "index_requesters_on_email", :unique => true
   add_index "requesters", ["reset_password_token"], :name => "index_requesters_on_reset_password_token", :unique => true
 
+  create_table "solutions", :force => true do |t|
+    t.text     "solution"
+    t.integer  "microtask_id"
+    t.integer  "worker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "solutions", ["microtask_id"], :name => "index_solutions_on_microtask_id"
+  add_index "solutions", ["worker_id"], :name => "index_solutions_on_worker_id"
+
   create_table "tasks", :force => true do |t|
     t.integer  "requester_id"
     t.text     "content"

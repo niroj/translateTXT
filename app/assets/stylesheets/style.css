@@ -342,7 +342,12 @@ table tr td
   list-style:none;
 }
 .microtask_list li:nth-child(even){
-  color:blue;
+  color:#052929;
+  background-color:#edf;
+}
+.microtask_list li:nth-child(odd){
+  color:brown;
+  background-color:#dce;
 }
 
 .microtask_table th .current {

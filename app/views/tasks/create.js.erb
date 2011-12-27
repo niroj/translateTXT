@@ -1,4 +1,4 @@
-<% if current_requester.credits - @task.budget >= 0 %>
+<% if current_requester.credits - @task.budget >= 0 || @task.budget <= %>
   $(".newly_added").html("<%= escape_javascript(render @task) %>");
   $('#credit').html("<%= current_requester.credits - @task.budget %>");
   $("#task_content").val("");
