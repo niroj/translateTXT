@@ -17,3 +17,12 @@ $(function () {
     }
   );
 });
+
+$(function () {
+  $('#microtasks_taskview .pagination a').live('click',
+    function () {
+      $.getScript(this.href);
+      return false;
+    }
+  );
+});

@@ -1,5 +1,22 @@
+
 <ul class = "microtask_list">
-<% @task.microtasks.each do |microtask|%>
-  <li> <%= microtask.original %><br /><br /></li>
+<% @microtasks.each do |microtask|%>
+  <li><div class = "microtask-shadow"><b class = "original_task_text"><%= microtask.original %></b></div></li>
+  <li id="microsolution_<%=microtask.id%>">
+    <div class = "microtask-shadow"> 
+      <% if microtask.translate.nil? %>
+        <i class = "pending">translation pending....</i>
+      <% elsif microtask.status == "review pending" %>
+        <i class = "review_pending"><%= microtask.translate %></i>
+        <p class="microtask_action"><%= link_to "approve", approve_microtask_path(microtask.id), :remote => true, :method => 'put' %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "reject", reject_microtask_path(microtask.id), :remote => true, :method => 'put'%></p>
+      <% elsif microtask.status == "completed"%>
+        <i class = "completed"><%= microtask.translate %></i>
+        <p class="microtask_action"><i><b>completed</b></i></p>
+      <% end %>
+    </div>
+  </li>   
+  <br /><br />
 <% end %>
 </ul>
+
+<center><%= will_paginate @microtasks %></center>

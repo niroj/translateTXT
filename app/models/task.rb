@@ -5,21 +5,20 @@ class Task < ActiveRecord::Base
 	validates :content, :length => { :minimum => 60 }
 	validates :lang_from, :lang_to, :budget, :presence => true
 	
+  before_save :default_values
   after_create :create_microtasks
 
   private
   def create_microtasks
-    #sent = self.content.split(".")
     if self.requester.credits >= self.budget
-      #p = (self.budget - self.budget*0.2)/sent.size
-      #sent.each do |s|
-       # a = self.microtasks.build(:original => s, :price => p, :hit => true, :lang_from => self.lang_from, :lang_to => self.lang_to)
-       # a.save
-     # end
       micro_task_builder
       self.requester.credits -= self.budget
       self.requester.save
     end
+  end
+  
+  def default_values
+    self.status = "incomplete" unless self.status
   end
   
   def micro_task_builder
@@ -29,7 +28,7 @@ class Task < ActiveRecord::Base
   	sentences = sentences_array.size
   	avg_word = total_words.to_f/sentences.to_f
   	limit = 60.to_f/avg_word
-  	price_p_word = total_words.to_f/((self.budget.to_f - self.budget.to_f*0.2)*100)
+  	price_p_word = ((self.budget.to_f - self.budget.to_f*0.2)/total_words.to_f)
   	word_counter = 0
   	total_counter = total_words
   	sent_counter =  0
@@ -48,7 +47,13 @@ class Task < ActiveRecord::Base
         a.save
   			temp_sent = nil
   			word_counter = 0
-  		elsif (total_counter.to_f <= (limit.floor*avg_word).floor && sent_counter == (sentences - 1) )
+  		elsif (word_counter.to_f > (limit.ceil*avg_word).ceil)
+  		  p = ((word_counter * price_p_word).round).to_i
+  		  a = self.microtasks.build(:original => temp_sent, :price => p, :hit => true, :lang_from => self.lang_from, :lang_to => self.lang_to)
+        a.save
+  			temp_sent = nil
+  			word_counter = 0  
+  		elsif (total_counter.to_f <= (limit.floor*avg_word).floor && sent_counter == (sentences) )
   			p = ((word_counter * price_p_word).round).to_i
   			a = self.microtasks.build(:original => temp_sent, :price => p, :hit => true, :lang_from => self.lang_from, :lang_to => self.lang_to)
         a.save

@@ -1,2 +1,4 @@
 <h1>Newly added</h1>
-<p><b><%= link_to @task.title, task_path(@task), :remote => true %> </b></p>
+<% if not current_requester.tasks.empty? %>
+  <p> <%= link_to current_requester.tasks.last.title, task_path(current_requester.tasks.last), :remote => true %></p>
+<% end %>

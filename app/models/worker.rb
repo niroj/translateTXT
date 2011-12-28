@@ -5,7 +5,8 @@ class Worker < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessor :login
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login
   
   before_save :default_values
   def default_values
@@ -13,5 +14,11 @@ class Worker < ActiveRecord::Base
     self.submitted = 0 unless self.submitted
     self.accepted = 0 unless self.accepted
   end
+  
+  def self.find_for_database_authentication(warden_conditions)
+     conditions = warden_conditions.dup
+     login = conditions.delete(:login)
+     where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.strip.downcase }]).first
+   end
   
 end

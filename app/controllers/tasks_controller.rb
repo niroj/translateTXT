@@ -11,6 +11,8 @@ class TasksController < ApplicationController
   
   def show
       @task = Task.find(params[:id])
+      task_status_update
+      @microtasks = @task.microtasks.paginate(:per_page => 5, :page => params[:page])
       respond_to do |format|
         format.html # show.html.erb
         format.js
@@ -20,42 +22,43 @@ class TasksController < ApplicationController
   
   def create
     @task = @requester.tasks.new(params[:task])
+    words_total = @task.content.split(" ")
+    @no_of_words = words_total.size.to_f
     if @task.budget > @requester.credits
     else
-     @task.save
-     respond_to do |format|
-           format.html { redirect_to @requester, notice: 'task was successfully created.' }
-           format.js         
-       end
-     end
+      if (((@task.budget.to_f - @task.budget.to_f*0.2)/@no_of_words.to_f) > 0.1)
+        @task.save
+        respond_to do |format|
+              format.html { redirect_to @requester, notice: 'task was successfully created.' }
+              format.js         
+        end
+      else
+        respond_to do |format|
+              format.html { redirect_to @requester, notice: "task wasn't successfully created." }
+              format.js
+            end
+      end
+    end
   end
 
-  # def destroy
-  #   
-  #   @task = Task.find(params[:id])
-  #   if @requester.user == current_user 
-  #     
-  #      @task.destroy
-  #     respond_to do |format|
-  #       format.html { redirect_to @requester }
-  #       format.json { head :ok }
-  #     end
-  #   else
-  #     respond_to do |format|
-  #       format.html { redirect_to @requester, notice: 'you are not authorized to delete' }
-  #       format.json { head :ok }
-  #     end
-  #   end
-  # end
-
-
-
-
+  
 	private
 
 	def find_requester
 		@requester = Requester.where(:id => current_requester.id).first
 	end
+	
+	def task_status_update
+	  @task = Task.find(params[:id])
+    @task.microtasks.each do |m|
+      if(m.status != "completed")
+        break
+      else
+        @task.status = "completed"
+        @task.save
+      end
+    end
+  end
 
 
 end

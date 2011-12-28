@@ -2,7 +2,9 @@
   <div class="newly_added">
     <h1>Newly added</h1>
     <% if not current_requester.tasks.empty? %>
-      <p> <%= link_to current_requester.tasks.last.title, task_path(current_requester.tasks.last), :remote => true %></p>
+    <ul>
+      <li><p> <%= link_to current_requester.tasks.last.title, task_path(current_requester.tasks.last), :remote => true %></p></li>
+    </ul>
     <% end %>
   </div>
   <div class="active_links">
@@ -16,6 +18,22 @@
   </div>
   <div class="all_tasks">
     <h1><%= link_to "All tasks", tasks_path, :remote => true %> </h1>
+  </div>
+  <div class="Completed_task">
+    <h1>Completed Task</h1>
+    <ul>
+      <% if not @completed_tasks.empty? %>
+        <% @completed_tasks.each do |completed_task| %>
+          <li><%= link_to completed_task.title, task_path(completed_task), :remote => true %></li>
+        <% end %>
+      <% else %>
+        No completed tasks!
+      <% end %>
+    </ul>
+  </div>
+  <div class="requester_help">
+    <h1>Help</h1>
+    
   </div>
 </div>
 <div id="content">

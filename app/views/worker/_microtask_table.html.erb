@@ -7,18 +7,18 @@
     <th width = 12%>Action</th>                  
   </tr>
   <% @microtasks.each do |microtask| %>
-    <tr>
-      <td><b>Has to translate:</b> <br /><%= microtask.original.truncate(65) %></td>
-      <td><%= microtask.lang_from %></td>
-      <td><%= microtask.lang_to %></td>        
-      <td><%= microtask.price %></td>
-      <td>
-      <% if microtask.hit == true %>
-        <b class = "hit" id="hit_link<%=microtask.id%>"><%= link_to "hit", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></b></td>
-      <% else %>
-        <i>Submitted</i>
-      <% end %>
-    </tr> 
+      <tr>
+        <td><b>Has to translate:</b> <br /><%= microtask.original.truncate(65) %></td>
+        <td><%= microtask.lang_from %></td>
+        <td><%= microtask.lang_to %></td>        
+        <td><%= microtask.price %></td>
+        <td>
+        <% if microtask.hit == true %>
+          <b class = "hit" id="hit_link<%=microtask.id%>"><%= link_to "translate this", hit_microtask_path(microtask.id), :remote => true, :method => 'put' %></b></td>
+        <% else %>
+          <i>Submitted</i>
+        <% end %>
+      </tr> 
   <% end %>
 </table>
 <center><%= will_paginate @microtasks %></center>

@@ -1,7 +1,9 @@
+<div id = "auth_info">  
   <% if requester_signed_in?  %>
-    Welcome! <b><%= current_requester.username %></b>&nbsp;&nbsp;You have &nbsp;<b id="credit"><%= current_requester.credits%></b>&nbsp;credits&nbsp;|&nbsp;
+    Welcome! <b><%= current_requester.username %></b>&nbsp;&nbsp;You have &nbsp;<b id="credit"><%= current_requester.credits%></b>&nbsp;credits
     <%= link_to "Log out", destroy_requester_session_path, :method => 'delete' %>
   <% elsif worker_signed_in? %>
-    Welcome! <b><%= current_worker.username %></b>&nbsp;&nbsp;You have earned &nbsp;<%= current_worker.earning%>&nbsp;|&nbsp;
+    Welcome! <b><%= current_worker.username %></b>&nbsp;&nbsp;You have earned &nbsp;<b id="credit"><%= current_worker.earning%></b>&nbsp;credits
     <%= link_to "Log out", destroy_worker_session_path, :method => 'delete' %>
   <% end %>
+</div>

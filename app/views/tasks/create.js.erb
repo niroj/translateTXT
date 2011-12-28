@@ -1,13 +1,17 @@
-<% if current_requester.credits - @task.budget >= 0 || @task.budget <= %>
-  $(".newly_added").html("<%= escape_javascript(render @task) %>");
-  $('#credit').html("<%= current_requester.credits - @task.budget %>");
-  $("#task_content").val("");
-  $("#task_lang_from").val("");
-  $("#task_lang_to").val("");
-  $("#task_budget").val("");
-  $("#task_rating").val("");
-  $("#task_title").val("");
- 
+<% if ((@task.budget.to_f - @task.budget.to_f*0.2)/@no_of_words.to_f) < 0.1  %>
+  alert('Very less amount of budget allocated for this task \n our workers expect atleast \n<%= ((0.1*@no_of_words.to_f)/0.8).ceil %> credits for this task');
 <% else %>
-  alert('you do not have enough credit');
+  <% if current_requester.credits - @task.budget >= 0  %>
+    $(".newly_added").html("<%= escape_javascript(render @task) %>");
+    $('#credit').html("<%= current_requester.credits - @task.budget %>");
+    $("#task_content").val("");
+    $("#task_lang_from").val("");
+    $("#task_lang_to").val("");
+    $("#task_budget").val("");
+    $("#task_rating").val("");
+    $("#task_title").val("");
+
+  <% else %>
+    alert('you do not have enough credit');
+  <% end %>
 <% end %>

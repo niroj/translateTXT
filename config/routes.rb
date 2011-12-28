@@ -11,9 +11,11 @@ Translator::Application.routes.draw do
   resources :tasks do
     resources :microtasks
   end
-    resources :microtasks, :only => [:hit, :update] do 
+    resources :microtasks, :only => [:hit, :update, :approve, :reject] do 
       member do
         put 'hit'
+        put 'approve'
+        put 'reject'
       end
     end
   root :to => 'home#index'

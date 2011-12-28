@@ -1,6 +1,50 @@
 <div class="sidebar">
-
-
+  
+  <div class = "messages">
+    
+  </div>
+  
+  <div class="submitted_microtasks">
+    <h1>submitted (<%= current_worker.submitted %>)</h1>
+    <div>
+    
+    <% if not @worker_microtasks.empty? %>
+    <ul>
+      <% @worker_microtasks.where(:status => "review pending").each do |worker_microtask| %>
+      <li>
+          <b>translated: </b><br /><%= worker_microtask.original.truncate(20) %><br />
+          <b>for:</b> <%= worker_microtask.price %> credits
+        <hr />
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+    </div>
+  </div>
+  
+  <div class="submitted_microtasks">
+    <h1>Approved (<%= current_worker.accepted %>)</h1>
+    <div>
+    
+    <% if not @worker_microtasks.empty? %>
+    <ul>
+      <% @worker_microtasks.where(:status => "completed").each do |worker_microtask| %>
+      <li>
+          <b>translated: </b><br /><%= worker_microtask.original.truncate(20) %><br />
+          <b>for:</b> <%= worker_microtask.price %> credits
+        <hr />
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+    </div>
+  </div>
+  <br />
+  <div class = "worker_rating">
+    <h3>Your Rating: <b><%= ((current_worker.accepted.to_f/current_worker.submitted.to_f)*100).round(2) if (current_worker.submitted > 0 ) %></b></h3>
+    <hr />
+  </div>
+  
 </div>
 
 

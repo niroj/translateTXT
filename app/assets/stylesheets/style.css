@@ -218,10 +218,20 @@ ul#menu li a:hover
 .sidebar li a.selected
 { color: #444;} 
 
-#content
-{ text-align: left;
+#content{ 
+  text-align: justify;
   width: 613px;
-  padding: 0;}
+  padding: 0;
+}
+#content table {
+  text-transform: capitalize;
+}
+
+#content h2{
+  text-shadow:1px 1px 1px #000;
+  font-size:25px;
+  text-transform: capitalize;
+}
 
 #content ul
 { margin: 2px 0 22px 0px;}
@@ -229,7 +239,7 @@ ul#menu li a:hover
 #content ul li
 { list-style-type: none;
   margin: 0 0 0 0; 
-  padding: 0 0 4px 25px;
+
   line-height: 1.5em;}
 #content ul li.even{
   color:blue;
@@ -334,7 +344,9 @@ table tr td
   width: 613px;
   padding: 0;
 }
-
+.newly_added a{
+  text-transform: capitalize;
+}
 .newly_added h1 {
   text-decoration: blink;
 }
@@ -343,11 +355,11 @@ table tr td
 }
 .microtask_list li:nth-child(even){
   color:#052929;
-  background-color:#edf;
+  
 }
 .microtask_list li:nth-child(odd){
   color:brown;
-  background-color:#dce;
+  background-color:#EBEAD3;
 }
 
 .microtask_table th .current {
@@ -361,6 +373,13 @@ table tr td
 
 .microtask_table th .desc { 
   background-image: url(down_arrow.gif); 
+}
+.microtask-shadow{
+  box-shadow:0px 0px 5px #000;
+  -moz-box-shadow:0px 0px 5px #000;
+  -webkit-box-shadow:0px 0px 5px #000;
+  padding: 0px 20px;
+  border-radius: 8px;
 }
 
 a {
@@ -380,4 +399,61 @@ a {
   width: 300px;
   resize: none;
   font-size: 16px;
+}
+.original_task_text{
+
+}
+.pending{
+  background-color: yellow;
+
+}
+.review_pending{
+  background-color: green;
+  color: white;
+
+}
+.completed{
+  background-color:#F2B6C3;
+  color:#fff;
+}
+#task-info-container{
+  text-align: right;
+}
+#task_content_scrollable{
+  overflow: auto;
+  height:500px;
+  padding:10px 20px;
+  box-shadow: 0px 4px 8px #000;
+  -moz-box-shadow: 0px 4px 8px #000;
+  -webkit-box-shadow: 0px 4px 8px #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+#auth_info{
+  width:70%;
+}
+#auth_info b{
+  font-size:14px;
+  color:#112c33;
+}
+#auth_info a{
+  float:right;
+}
+#microtasks_taskview h2{
+  text-shadow:1px 1px 1px #000;
+  font-size:20px;
+}
+.Completed_task{
+  text-transform: capitalize;
+}
+.microtask_action{
+  text-align: right;
+}
+.submitted_microtasks div{
+  height:200px;
+  width:200px;
+  overflow: auto;
+  border: 1px solid #000;
+  padding: 5px;
 }

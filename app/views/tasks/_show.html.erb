@@ -1,6 +1,11 @@
-This is show view <%= @task.title%>
-<%= @task.requester.username %><br />
-<%= @task.content %>
+<h2><%= @task.title%></h2><br />
+<h5 id = "task-info-container">Price allocated: <%= @task.budget %>&nbsp;&nbsp;&nbsp;&nbsp; No of microtasks: <%= @task.microtasks.size %>&nbsp;&nbsp;&nbsp;&nbsp; Status : <%= @task.status %></h5><br />
+<div id = "task_content_scrollable"><%= @task.content %></div>
 <br />
 <br />
-<%= render 'microtasks/index' %>
+<div id = "microtasks_taskview">
+  
+  <h2> Microtasks : </h2>
+  <%= render 'microtasks/index' %>
+
+</div>

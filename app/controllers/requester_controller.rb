@@ -5,6 +5,7 @@ class RequesterController < ApplicationController
 
     def show
       @requester = Requester.where(:id => current_requester.id).first
+      @completed_tasks = @requester.tasks.where(:status => "completed").limit(5)
       respond_with(@requester)
     end
   
