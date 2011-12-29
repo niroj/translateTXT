@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_filter :find_requester
 
   def index
+    task_status_update
     @tasks = @requester.tasks
   end
   
@@ -11,7 +12,6 @@ class TasksController < ApplicationController
   
   def show
       @task = Task.find(params[:id])
-      task_status_update
       @microtasks = @task.microtasks.paginate(:per_page => 5, :page => params[:page])
       respond_to do |format|
         format.html # show.html.erb
@@ -40,6 +40,24 @@ class TasksController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @task = @requester.tasks.find(params[:id])
+    if @task.requester == current_requester
+      @task.microtasks.destroy_all
+      @task.destroy
+      @tasks = @requester.tasks
+      respond_to do |format|
+        format.html { redirect_to @requester, notice: 'task was successfully deleted.' }
+        format.js 
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @requester}
+        format.js
+      end
+    end
+  end
 
   
 	private
@@ -48,14 +66,16 @@ class TasksController < ApplicationController
 		@requester = Requester.where(:id => current_requester.id).first
 	end
 	
-	def task_status_update
-	  @task = Task.find(params[:id])
-    @task.microtasks.each do |m|
-      if(m.status != "completed")
-        break
-      else
-        @task.status = "completed"
-        @task.save
+  def task_status_update
+    @tasks = @requester.tasks
+    @tasks.each do |t|
+      t.microtasks.each do |m|
+        if(m.status != "completed")
+          break
+        else
+          t.status = "completed"
+          t.save
+        end
       end
     end
   end

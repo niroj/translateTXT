@@ -4,11 +4,11 @@
     <th width = 13%><%= sortable "lang_from", "From" %></th>
     <th width = 13%><%= sortable "lang_to", "To" %></th>
     <th width = 12%><%= sortable "price", "Amount" %></th>
-    <th width = 12%>Action</th>                  
+    <th width = 12%><%= sortable "status", "Action" %></th>                  
   </tr>
   <% @microtasks.each do |microtask| %>
       <tr>
-        <td><b>Has to translate:</b> <br /><%= microtask.original.truncate(65) %></td>
+        <td><b>Has to translate:</b> <br /><%= microtask.original.truncate(50) %></td>
         <td><%= microtask.lang_from %></td>
         <td><%= microtask.lang_to %></td>        
         <td><%= microtask.price %></td>

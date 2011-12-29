@@ -1,6 +1,10 @@
 <h2><%= @task.title%></h2><br />
 <h5 id = "task-info-container">Price allocated: <%= @task.budget %>&nbsp;&nbsp;&nbsp;&nbsp; No of microtasks: <%= @task.microtasks.size %>&nbsp;&nbsp;&nbsp;&nbsp; Status : <%= @task.status %></h5><br />
 <div id = "task_content_scrollable"><%= @task.content %></div>
+<% if @task.status == "completed"%>
+<br />
+<p><%= link_to "Delete Task!!!", task_path(@task.id), :method => 'delete', :remote => true %></p>
+<%end%>
 <br />
 <br />
 <div id = "microtasks_taskview">
