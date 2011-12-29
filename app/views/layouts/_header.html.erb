@@ -11,9 +11,9 @@
       <ul id="menu">
         <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
         <% if requester_signed_in? %>
-          <li class="selected"><%= link_to "Home", requester_root_path %></li>
+          <li class="selected"><%= link_to "New Task", requester_root_path %></li>
         <% elsif worker_signed_in? %>
-          <li class="selected"><%= link_to "Home", worker_root_path %></li>
+          <li class="selected"><%= link_to "View Tasks", worker_root_path %></li>
         <% else %>
           <li class="selected"><%= link_to "Home", root_path %></li>
         <% end %>

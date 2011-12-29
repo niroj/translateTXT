@@ -5,6 +5,7 @@
     <th>From</th>
     <th>To</th>
     <th>Price</th>
+    <th>Status</th>
   </tr>
 <% @tasks.each do |task|%>
   <tr>
@@ -12,6 +13,15 @@
       <td><%= task.lang_from%></td>
       <td><%= task.lang_to%></td>
       <td><%= task.budget%></td>
+      <% task.microtasks.each do |m| %>
+        <% if m.status == "review pending" %>
+          <% @status_flag = m.status %>
+          <% break %>
+        <% else %>
+          <% @status_flag = task.status %>
+        <% end %>
+      <% end %>
+      <td><%= @status_flag %></td>
   </tr>
 <% end %>
 </table>
